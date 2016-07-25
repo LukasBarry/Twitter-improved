@@ -24,3 +24,7 @@
 .cant-see-me {
   display: none;
 }
+
+.centered {
+  align: center;
+}

@@ -30,7 +30,8 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweet = Tweet.all
+    @tweets = Tweet.all
+    @tweet = Tweet.new
   end
 
   def destroy

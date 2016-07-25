@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container-fluid">
+<%= render 'form' %>
+
 <h1>Twattling Your Twiddling Tweets</h1><br />
 
 <div class="row">
-  <% @tweet.each do |tweet| %>
-  <div class="col-md-8">
+  <% @tweets.each do |tweet| %>
+  <div class="col-md-7">
     <div class="panel panel-default">
         <div class="panel-body">
           <strong><%= link_to tweet.user.name, tweet_path(tweet) %></strong> <%= tweet.user.username %> tweetled:<br />
@@ -12,7 +15,7 @@
         </div>
         <% if current_user.id == tweet.user.id %>
         <div class="panel-footer">
-          <%= link_to 'Edit', edit_tweet_path(@tweet), class: "btn btn-primary" %> |
+          <%= link_to 'Edit', edit_tweet_path(@tweets), class: "btn btn-primary" %> |
           <%= link_to 'Delete', tweet, class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
         <% end %>
@@ -20,3 +23,4 @@
     </div>
     <% end %>
   </div>
+</div>
