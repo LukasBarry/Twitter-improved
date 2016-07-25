@@ -30,12 +30,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to " Home", tweets_path, class: "glyphicon glyphicon-home" %></li>
-        <li><%= link_to " Tweetle", new_tweet_path, class: "glyphicon glyphicon-pencil" %></li>
+        <li><%= link_to "Home", tweets_path, class: "glyphicon glyphicon-home" %></li>
+        <li><%= link_to "Tweetle", new_tweet_path, class: "glyphicon glyphicon-pencil" %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-        <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

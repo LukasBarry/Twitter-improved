@@ -1,28 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Twattling Your Twiddling Tweets</h1>
+<h1>Twattling Your Twiddling Tweets</h1><br />
 
-<table>
-  <thead>
-    <tr>
-      <th>Message</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tweet.each do |x| %>
-      <tr>
-        <td><%= x.message %></td>
-        <td><%= x.user.username %></td>
-        <td><%= link_to 'Show', x %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(x) %></td>
-        <td><%= link_to 'Destroy', x, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <% @tweet.each do |tweet| %>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-body">
+          <strong><%= link_to tweet.user.name, tweet_path(tweet) %></strong> <%= tweet.user.username %> tweetled:<br />
+          <h3><%= tweet.message %></h3>
+        </div>
+        <% if current_user.id == tweet.user.id %>
+        <div class="panel-footer">
+          <%= link_to 'Edit', edit_tweet_path(@tweet), class: "btn btn-primary" %> |
+          <%= link_to 'Delete', tweet, class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+        <% end %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tweet', new_tweet_path %>
+  </div>
