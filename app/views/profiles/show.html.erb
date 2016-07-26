@@ -1,13 +1,27 @@
-<h1><%= @user.username %>'s Profile</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="col-md-4">
+        <h2><%= @user.name %></h2>
+        <h4><%= @user.username %></h4>
+        <h4><%= @user.location %></h4>
+        <h4><%= @user.bio %></h4>
+      </div>
+    </div>
 
-<% @user.tweets.each do |tweet| %>
-  <%= tweet.message %> <br />
-<% end %>
+    <div class="list-group col-md-8">
+    <% @user.tweets.each do |tweet| %>
+      <li class="list-group-item"><strong><%= tweet.user.name %></strong> <%= tweet.user.username %> Tweetled:
+        <br /><h4><%= tweet.message %></h4></li> <br />
+    <% end %>
+    </div>
 
-<% if current_user.id != @user.id %>
-<% if current_user.friends.include?(@user) %>
-    <%= link_to "Unfollow", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete %>
-  <% else %>
-    <%= link_to "Follow", relationships_path(friend_id: @user), method: :post %>
-  <% end %>
-  <% end %>
+    <% if current_user.id != @user.id %>
+      <% if current_user.friends.include?(@user) %>
+        <%= link_to "Unfollow", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-danger"  %>
+      <% else %>
+        <%= link_to "Follow", relationships_path(friend_id: @user), method: :post, class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -28,3 +28,8 @@
 .centered {
   align: center;
 }
+
+.jumbotron {
+  margin: 10px;
+  background-color: white;
+}
