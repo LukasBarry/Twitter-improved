@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'profiles/index'
+
+  get 'profiles/show'
+
   devise_for :users
 
   post 'tweets' => 'tweets#create'
@@ -9,7 +13,11 @@ Rails.application.routes.draw do
   put 'tweets/:id' => 'tweets#update'
   patch 'tweets/:id' => 'tweets#update'
   delete 'tweets/:id' => 'tweets#destroy'
+  get "profiles/:id" => "profiles#show", as: :profile
+  get "profiles" => "profiles#index"
 
   root 'tweets#index'
+
+  resources :relationships
 
 end
