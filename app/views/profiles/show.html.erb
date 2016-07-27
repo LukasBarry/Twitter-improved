@@ -15,14 +15,40 @@
           <% else %>
             <%= link_to "Follow", relationships_path(friend_id: @user), method: :post, class: "btn btn-primary" %>
           <% end %>
-        <% end %>
+        <% end %><br /><br />
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Following
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Following</h4>
+              </div>
+              <div class="modal-body">
+                <% @user.friends.each do |friend| %>
+                  <h4><%= friend.name %></h4>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </div>
 
     <div class="list-group col-md-8">
       <% if current_user.id == @user.id %>
-      <h2>What's on your mind?</h2>
-      <%= render 'tweets/form' %>
+        <li class="list-group-item">
+          <h2>What's on your mind?</h2>
+          <%= render 'tweets/form' %>
+        </li>
       <% end %>
       <br />
     <% @user.tweets.each do |tweet| %>
