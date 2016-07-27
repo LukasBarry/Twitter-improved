@@ -46,7 +46,7 @@ class TweetsController < ApplicationController
   end
 
  def tweet_params
-    params.require(:tweet).permit(:message, :user_id)
+    params.require(:tweet).permit(:message, :user_id, :avatar)
  end
 
 end

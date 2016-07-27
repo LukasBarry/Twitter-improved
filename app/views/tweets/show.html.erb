@@ -6,6 +6,9 @@
       <div class="panel-body">
         <strong><%= @tweet.user.name %></strong> <%= @tweet.user.username %> tweetled:<br />
         <h3><%= @tweet.message %></h3>
+        <% if @tweet.avatar_file_name != nil %>
+          <%= image_tag @tweet.avatar.url(:medium), class: "img-responsive" %>
+        <% end %>
       </div>
     </div>
   </div>

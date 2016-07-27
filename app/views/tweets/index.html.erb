@@ -1,15 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
-<div class="row">
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
 
-      </div>
-    </div>
-  </div>
-</div>
 <div class="row">
   <div class="col-md-7">
     <h2>What's on your mind?</h2>
@@ -19,8 +11,11 @@
         <% @tweets.each do |tweet| %>
         <div class="panel panel-default">
             <div class="panel-body">
-              <strong><%= link_to tweet.user.name, profile_path(tweet.user) %></strong> <%= tweet.user.username %> tweetled:<br />
+              <strong><%= link_to tweet.user.name, profile_path(tweet.user) %></strong> <%= tweet.user.username %> tweetled <%= time_ago_in_words(tweet.created_at) %> ago:<br />
               <h3><%= tweet.message %></h3>
+              <% if tweet.avatar_file_name != nil %>
+                <%= image_tag tweet.avatar.url(:medium), class: "img-responsive" %>
+              <% end %>
             </div>
             <% if current_user.id == tweet.user.id %>
             <div class="panel-footer">
