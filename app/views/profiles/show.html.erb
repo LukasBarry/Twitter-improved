@@ -12,7 +12,13 @@
     <div class="list-group col-md-8">
     <% @user.tweets.each do |tweet| %>
       <li class="list-group-item"><strong><%= tweet.user.name %></strong> <%= tweet.user.username %> Tweetled:
-        <br /><h4><%= tweet.message %></h4></li> <br />
+        <br /><h4><%= tweet.message %></h4>
+        <% if current_user.likes?(tweet) %>
+        <%= link_to "Unlike", tweet_like_path(tweet), method: :delete, class: "btn btn-primary" %>
+        <% else %>
+        <%= link_to "Like", tweet_like_path(tweet), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      </li> <br />
     <% end %>
     </div>
 
