@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # delete 'tweets/:id' => 'tweets#destroy'
   get "profiles/:id" => "profiles#show", as: :profile
   get "profiles" => "profiles#index"
+  get "feed" => 'profiles#feed'
 
   root 'tweets#index'
 
