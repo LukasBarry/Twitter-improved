@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
-      redirect_to @tweet, notice: "You just tweeted!"
+      redirect_to @tweet, notice: 'You just tweeted!'
     else
       render :new
     end
@@ -23,7 +23,7 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.update(tweet_params)
-      redirect_to @tweet, notice: "Your tweet has been updated"
+      redirect_to @tweet, notice: 'Your tweet has been updated'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy
-    redirect_to tweets_path, notice: "Your tweet has been deleted"
+    redirect_to tweets_path, notice: 'Your tweet has been deleted'
   end
 
   private
@@ -45,8 +45,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
- def tweet_params
+  def tweet_params
     params.require(:tweet).permit(:message, :user_id, :avatar)
- end
-
+  end
 end

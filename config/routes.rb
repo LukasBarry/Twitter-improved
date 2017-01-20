@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   # put 'tweets/:id' => 'tweets#update'
   # patch 'tweets/:id' => 'tweets#update'
   # delete 'tweets/:id' => 'tweets#destroy'
-  get "profiles/:id" => "profiles#show", as: :profile
-  get "profiles" => "profiles#index"
-  get "feed" => 'profiles#feed'
+  get 'profiles/:id' => 'profiles#show', as: :profile
+  get 'profiles' => 'profiles#index'
+  get 'feed' => 'profiles#feed'
 
   root 'tweets#index'
 
@@ -24,5 +24,4 @@ Rails.application.routes.draw do
   resources :tweets do
     resource :like, only: [:create, :destroy]
   end
-
 end
